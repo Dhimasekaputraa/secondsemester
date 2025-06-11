@@ -50,20 +50,26 @@ def asc_insertion(data_list):
 
     for i in range(len(data_list)):
         current = i
+        value = data_list[i]
         swapped = False
+        step_actions = []
+
         print("-" * 30)
-        print(f"Langkah {i + 1}:")
+        print(f"Langkah {i + 1}")
 
         while current > 0 and data_list[current - 1] > data_list[current]:
-            print(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
+            step_actions.append(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
             data_list[current - 1], data_list[current] = data_list[current], data_list[current - 1]
+            print(f"{step_actions[-1]}")
             print(f"-> {clean_num(data_list)}")
             current -= 1
             swapped = True
 
         if not swapped:
-            print("Tidak ada pertukaran")
+            print(f"Angka {clean_num([value])[0]} tidak mengalami pergeseran.")
+
         print(f"\nHasil: {clean_num(data_list)}")
+
     print("-" * 30)
     return data_list
 
@@ -73,20 +79,26 @@ def des_insertion(data_list):
 
     for i in range(len(data_list)):
         current = i
+        value = data_list[i]
         swapped = False
+        step_actions = []
+    
         print("-" * 30)
-        print(f"Langkah {i + 1}:")
+        print(f"Langkah {i + 1}")
 
         while current > 0 and data_list[current - 1] < data_list[current]:
-            print(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
+            step_actions.append(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
             data_list[current - 1], data_list[current] = data_list[current], data_list[current - 1]
+            print(f"{step_actions[-1]}")
             print(f"-> {clean_num(data_list)}")
             current -= 1
             swapped = True
 
         if not swapped:
-            print("Tidak ada pertukaran")
+            print(f"Angka {clean_num([value])[0]} tidak mengalami pergeseran.")
+
         print(f"\nHasil: {clean_num(data_list)}")
+
     print("-" * 30)
     return data_list
 
