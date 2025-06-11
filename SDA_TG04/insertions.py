@@ -1,24 +1,56 @@
 #Program mengurutkan data dengan metode insertion sort
-def asc_insertion(data_list): #mengurutkan data secara ascending / menaik
+data_list = []
+
+def asc_insertion(data_list):
     print("\n== Pengurutan Data Secara Ascending ==")
-    print("Tahapan pengurutan data secara ascending : ")
-    for i in range(0, len(data_list)):
+    print("Tahapan pengurutan data secara ascending:\n")
+
+    for i in range(len(data_list)):
         current = i
+        swapped = False
+        step_actions = []
+
         while current > 0 and data_list[current - 1] > data_list[current]:
-            data_list[current-1], data_list[current] = data_list[current], data_list[current-1]
-            current -=1
-        print(f"Langkah {i+1} : {str(clean_num(data_list))}")
+            step_actions.append(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
+            data_list[current - 1], data_list[current] = data_list[current], data_list[current - 1]
+            current -= 1
+            swapped = True
+
+        print("-" * 30)
+        print(f"Langkah {i + 1}")
+        if swapped:
+            for aksi in step_actions:
+                print(aksi)
+        else:
+            print("Tidak ada pertukaran")
+        print(f"Hasil: {clean_num(data_list)}")
+    print("-" * 30)
     return data_list
 
-def des_insertion(data_list): #mengurutkan data secara descending / menurun
+def des_insertion(data_list):
     print("\n== Pengurutan Data Secara Descending ==")
-    print("Tahapan pengurutan data secara descending : ")
-    for i in range(0, len(data_list)):
+    print("Tahapan pengurutan data secara descending:\n")
+
+    for i in range(len(data_list)):
         current = i
+        swapped = False
+        step_actions = []
+
         while current > 0 and data_list[current - 1] < data_list[current]:
-            data_list[current-1], data_list[current] = data_list[current], data_list[current-1]
-            current -=1
-        print(f"Langkah {i+1} : {str(clean_num(data_list))}")
+            step_actions.append(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
+            data_list[current - 1], data_list[current] = data_list[current], data_list[current - 1]
+            current -= 1
+            swapped = True
+
+        print("-" * 30)
+        print(f"Langkah {i + 1}")
+        if swapped:
+            for aksi in step_actions:
+                print(aksi)
+        else:
+            print("Tidak ada pertukaran")
+        print(f"Hasil: {clean_num(data_list)}")
+    print("-" * 30)
     return data_list
 
 def add_data():
@@ -106,8 +138,8 @@ def sort_menu(): # menu untuk pengurutan data, jenis apa yang diinginkan ascendi
         except ValueError:
             print("Input harus berupa angka [ 1 s.d 4]")
             
-while True: #main program
-    
+def main():
+    global data_list
     while True:
         try:
             print("\n| Program Pengurutan Data Menggunakan Insertion Sort |")
@@ -119,25 +151,35 @@ while True: #main program
             break
         except ValueError:
             print("Input tidak boleh mengandung karakter non-angka")
-            
+                
     while True:
         try:
             print("\n| Main Menu Insertion Sort|")
             print("[1] Edit Data [Mengedit list data]")
             print("[2] Sort options [Opsi menampilkan urutan data]")
-            print("[3] Keluar dari main menu [Mengakhiri program]")
+            print("[3] Keluar dari main menu")
             main_menu = int(input("Pilih opsi [1/2/3] : "))
-        
+
             if main_menu == 1 :   #opsi menu untuk mengubah data
                 data_menu()
             elif main_menu == 2 : #opsi untuk melihat perubahan data yang telah diurutkan
                 sort_menu()
             elif main_menu == 3:
                 print("Keluar dari main menu...")
-                print("Program selesai, terima kasih")
-                quit()
+                while True:
+                    rerun = input("\nApakah Anda ingin menghentikan program? [Y/N] : ").lower()
+                    if rerun == "y":
+                        print("Program selesai, terima kasih!")
+                        exit()
+                    elif rerun == "n":
+                        return
+                    else:
+                        print("Input tidak valid! Harap masukkan Y atau N.")
             else:
                 print("input tidak valid! [pilih 1/2/3]")
-        
+
         except ValueError:
             print("input tidak valid! [input hanya berupa angka 1/2/3]")
+
+while True:
+    main()
