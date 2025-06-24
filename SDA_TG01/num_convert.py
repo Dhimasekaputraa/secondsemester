@@ -1,4 +1,4 @@
-#Program konversi bilangan
+#Program konversi sistem bilangan (desimal ke bentuk biner, oktal, dan heksa desimal)
 
 credit = "y"
 while credit.lower() == "y" :
