@@ -1,4 +1,4 @@
-#program penginputan data ke antrian
+#program penginputan data ke antrian dan pengeditan data antrian
 
 credit = "y"
 while credit.lower() == "y" :
