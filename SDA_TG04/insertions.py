@@ -52,15 +52,13 @@ def asc_insertion(data_list):
         current = i
         value = data_list[i]
         swapped = False
-        step_actions = []
 
         print("-" * 30)
-        print(f"Langkah {i + 1}")
+        print(f"Langkah {i + 1}\n")
 
         while current > 0 and data_list[current - 1] > data_list[current]:
-            step_actions.append(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
+            print(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
             data_list[current - 1], data_list[current] = data_list[current], data_list[current - 1]
-            print(f"{step_actions[-1]}")
             print(f"-> {clean_num(data_list)}")
             current -= 1
             swapped = True
@@ -81,15 +79,13 @@ def des_insertion(data_list):
         current = i
         value = data_list[i]
         swapped = False
-        step_actions = []
     
         print("-" * 30)
-        print(f"Langkah {i + 1}")
+        print(f"Langkah {i + 1}\n")
 
         while current > 0 and data_list[current - 1] < data_list[current]:
-            step_actions.append(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
+            print(f"Tukar {data_list[current - 1]} dan {data_list[current]}")
             data_list[current - 1], data_list[current] = data_list[current], data_list[current - 1]
-            print(f"{step_actions[-1]}")
             print(f"-> {clean_num(data_list)}")
             current -= 1
             swapped = True
